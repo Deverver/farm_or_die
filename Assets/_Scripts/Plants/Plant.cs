@@ -1,16 +1,49 @@
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-public class plant : MonoBehaviour
+public class Plant : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int growthStage = 0;
+    public int maxGrowthStage = 3;
+
+    public Sprite[] growthSprites;
+
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        UpdateSprite();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Grow()
     {
-        
+        if (growthStage < maxGrowthStage)
+        {
+            growthStage++;
+
+            Debug.Log("Plant grew to stage: " + growthStage);
+
+            UpdateSprite();
+        }
+
+        if (IsReadyToHarvest())
+        {
+            Debug.Log("Plant is ready to harvest!");
+        }
+    }
+
+    void UpdateSprite()
+    {
+        if (growthSprites != null && growthStage < growthSprites.Length)
+        {
+            spriteRenderer.sprite = growthSprites[growthStage];
+        }
+    }
+
+    public bool IsReadyToHarvest()
+    {
+        return growthStage >= maxGrowthStage;
     }
 }
