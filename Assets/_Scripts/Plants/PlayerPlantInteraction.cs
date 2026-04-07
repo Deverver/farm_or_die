@@ -3,6 +3,13 @@ using UnityEngine;
 public class PlayerPlantInteraction : MonoBehaviour
 {
     private PlantSlot currentSlot;
+    private PlayerStats playerStats;
+
+    void Start()
+    {
+        playerStats = GetComponent<PlayerStats>();
+
+    }
 
     void Update()
     {
@@ -10,17 +17,27 @@ public class PlayerPlantInteraction : MonoBehaviour
         {
             if (currentSlot != null)
             {
-                if (!currentSlot.IsOccupied())
+                if (!currentSlot.IsOccupied()) // Slots is empty
                 {
-                    currentSlot.Plant();
+                    if (playerStats.UseEnergy(10))
+                    {
+                        currentSlot.Plant();
+                    }
                 }
                 else
                 {
-                    currentSlot.Harvest();
+                    if (currentSlot.isReadyToHarvest()) // slot is not empty, check plant
+                    {
+                        if (playerStats.UseEnergy(10))
+                        {
+                            currentSlot.Harvest();
+                        }
+                    }
                 }
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

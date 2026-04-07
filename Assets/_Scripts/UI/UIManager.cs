@@ -1,16 +1,31 @@
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI energyText;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI moneyText;
+
+
+    public void UpdateDay(int day)
     {
-        
+        dayText.text = "Day: " + day;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateEnergy(int energy)
     {
-        
+        energyText.text = "Energy: " + energy;
+    }
+
+    public void UpdateHealth(int health)
+    {
+        healthText.text = "Health: " + health;
+    }
+
+    public void UpdateMoney(int money)
+    {
+        moneyText.text = "Money: " + money;
     }
 }

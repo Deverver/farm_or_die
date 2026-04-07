@@ -4,7 +4,6 @@ using Debug = UnityEngine.Debug;
 
 public class PlantSlot : MonoBehaviour
 {
-
     public GameObject PlantPrefab;
     private GameObject currentPlant;
 
@@ -20,29 +19,38 @@ public class PlantSlot : MonoBehaviour
         currentPlant = Instantiate(PlantPrefab, transform.position, Quaternion.identity);
     }
 
-    public void Harvest()
+
+
+    public bool isReadyToHarvest()
     {
-        if (!IsOccupied()) return;
+        if (!IsOccupied()) return false;
 
         Plant plantScript = currentPlant.GetComponent<Plant>();
 
         if (plantScript != null && plantScript.IsReadyToHarvest())
         {
-            Destroy(currentPlant);
-            currentPlant = null;
-
-            Debug.Log("Plant harvested");
+            return true;
         }
         else
         {
-            Debug.Log("Plant is not ready yet!");
+            return false;
         }
+    }
+
+
+    public bool Harvest()
+    {
+        Destroy(currentPlant);
+        currentPlant = null;
+
+        Debug.Log("Plant harvested");
+        return true;
     }
 
     public void GrowPlant()
     {
         if (currentPlant == null) return;
-        
+
         Plant plantScript = currentPlant.GetComponent<Plant>();
         if (plantScript != null)
         {
