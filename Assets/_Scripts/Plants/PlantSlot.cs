@@ -12,11 +12,13 @@ public class PlantSlot : MonoBehaviour
         return currentPlant != null;
     }
 
-    public void Plant()
+    public void Plant(PlantData plantData)
     {
         if (IsOccupied()) return;
+        if (plantData == null) { Debug.LogError("PlantData er null – tjek at ItemData.seedFor er sat!"); return; }
 
         currentPlant = Instantiate(PlantPrefab, transform.position, Quaternion.identity);
+        currentPlant.GetComponent<Plant>().Initialize(plantData); // ← eksplicit kald
     }
 
 
@@ -58,4 +60,10 @@ public class PlantSlot : MonoBehaviour
             Debug.Log("Growing plant in slot: " + gameObject.name);
         }
     }
+
+    public Plant GetCurrentPlant()
+    {
+        return currentPlant != null ? currentPlant.GetComponent<Plant>() : null;
+    }
+
 }

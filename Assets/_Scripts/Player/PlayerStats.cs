@@ -52,4 +52,35 @@ public class PlayerStats : MonoBehaviour
             return false;
         }
     }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        uiManager.UpdateHealth(currentHealth);
+        if (currentHealth <= 0) GameManager.Instance.GameOver();
+    }
+
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        uiManager.UpdateHealth(currentHealth);
+    }
+
+    public void EarnMoney(int amount)
+    {
+        currentMoney += amount;
+        uiManager.UpdateMoney(currentMoney);
+    }
+
+    public bool SpendMoney(int amount)
+    {
+        if (currentMoney < amount) return false;
+        currentMoney -= amount;
+        uiManager.UpdateMoney(currentMoney);
+        return true;
+    }
+
+
 }

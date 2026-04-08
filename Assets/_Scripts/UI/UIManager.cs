@@ -7,7 +7,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI radiationText;
 
+
+    public void UpdateRadiation(float currentRadiation)
+    {
+        radiationText.text = "Radiation: " + Mathf.RoundToInt(currentRadiation) + "%";
+    }
 
     public void UpdateDay(int day)
     {

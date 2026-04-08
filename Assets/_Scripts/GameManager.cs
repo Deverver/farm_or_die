@@ -1,85 +1,33 @@
-using System.Diagnostics;
-using System.Xml.Serialization;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    PlantSlot[] allSlots;
+    // ── Singleton ─────────────────────────────────────────────────
+    public static GameManager Instance { get; private set; }
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+    }
+
+    // ── System References ─────────────────────────────────────────
+    [Header("Systems")]
+    public DaySystem daySystem;
+    public WeatherSystem weatherSystem;
+    public RadiationSystem radiationSystem;
+    public MutationSystem mutationSystem;
+
+    [Header("UI")]
     public UIManager uiManager;
-    public int currentDay = 1;
 
-    void Start()
+    [Header("Player")]
+    public PlayerStats playerStats;
+
+    // ── Game State ────────────────────────────────────────────────
+    public void GameOver()
     {
-        allSlots = FindObjectsByType<PlantSlot>(FindObjectsSortMode.None);
-        uiManager.UpdateDay(currentDay);
+        Debug.Log("GAME OVER");
+        // SceneManager.LoadScene("GameOver");
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EndDay();
-        }
-    }
-
-
-    public void EndDay()
-    {
-        HandlePLantGrowth();
-        HandlePlayerEnergy();
-
-        
-        Debug.Log("Day ended");
-        currentDay++; // This is the turning point for a new day
-        uiManager.UpdateDay(currentDay);
-        HandleDayEvents();
-    }
-
-
-
-    public void HandlePLantGrowth()
-    {
-        foreach (PlantSlot slot in allSlots)
-        {
-            slot.GrowPlant();
-        }
-    }
-
-    public void HandlePlayerEnergy()
-    {
-        FindAnyObjectByType<PlayerStats>().RegenerateEnergy(80);
-    }
-
-
-    public void HandleDayEvents()
-    {
-        CheckForTimedEvents();
-    }
-
-    public void WeeklyEvent()
-    {
-    }
-
-    public void MonthlyEvent()
-    {
-    }
-
-    public void CheckForTimedEvents() 
-    { 
-        if (currentDay % 7 == 0)
-        {
-            WeeklyEvent();
-        }
-        if (currentDay % 30 == 0)
-        {
-            MonthlyEvent();
-        }
-    }
-
-
-
-
 }

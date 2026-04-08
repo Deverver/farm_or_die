@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2df84115ae55c42b329385aed3a5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlantSlot
-  PlantPrefab: {fileID: 6742476850422390860, guid: 66b4a5bbbc9a229489ff5835f7ee4e6b, type: 3}
+  PlantPrefab: {fileID: 1557720343633228061, guid: 66b4a5bbbc9a229489ff5835f7ee4e6b, type: 3}
