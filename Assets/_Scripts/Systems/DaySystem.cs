@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class DaySystem : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class DaySystem : MonoBehaviour
     public void EndDay()
     {
         HandlePlantGrowth();
+        GameManager.Instance.crossbreedingSystem?.ProcessCrossbreeding();
         HandleMutations();
         HandleEnvironment();
         CheckForTimedEvents();
@@ -61,9 +63,9 @@ public class DaySystem : MonoBehaviour
 
     private void HandleMutations()
     {
-        // Aktiveres i Fase 6 (MutationSystem)
-        // MutationSystem.Instance?.RollAllMutations(allSlots, gm.weatherSystem.CurrentWeather);
+        gm.mutationSystem?.RollAllMutations(allSlots, gm.weatherSystem.CurrentWeather);
     }
+
 
     private void HandleEnvironment()
     {

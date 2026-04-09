@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public WeatherSystem weatherSystem;
     public RadiationSystem radiationSystem;
     public MutationSystem mutationSystem;
+    public CrossbreedingSystem crossbreedingSystem;
 
     [Header("UI")]
     public UIManager uiManager;

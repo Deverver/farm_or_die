@@ -66,4 +66,6 @@ public class PlantSlot : MonoBehaviour
         return currentPlant != null ? currentPlant.GetComponent<Plant>() : null;
     }
 
+    public Plant GetPlant() => currentPlant?.GetComponent<Plant>();
+
 }

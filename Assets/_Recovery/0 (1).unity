@@ -413,8 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568b9b363d8cae84694fb4e07ff0b2f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutationSystem
-  allMutations:
-  - {fileID: 11400000, guid: cf4d14e4f4233d54297b1bb0f383d0d3, type: 2}
+  allMutations: []
 --- !u!4 &393477563
 Transform:
   m_ObjectHideFlags: 0
@@ -7078,7 +7077,7 @@ MonoBehaviour:
   daySystem: {fileID: 34773317}
   weatherSystem: {fileID: 1788389218}
   radiationSystem: {fileID: 561130380}
-  mutationSystem: {fileID: 393477562}
+  mutationSystem: {fileID: 0}
   crossbreedingSystem: {fileID: 0}
   uiManager: {fileID: 1370952473}
   playerStats: {fileID: 8288329734229713658}
