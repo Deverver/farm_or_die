@@ -89,8 +89,8 @@ public class Plant : MonoBehaviour
         MutationEffect[] slots = { slot1, slot2, slot3 };
         foreach (var slot in slots)
         {
-            if (slot == null || string.IsNullOrEmpty(slot.mutationSpriteKey)) continue;
-            Sprite s = data.GetMutationSprite(slot.mutationSpriteKey);
+            if (slot == null) continue;
+            Sprite s = data.GetMutationSprite(slot);
             if (s != null) return s;
         }
         return null;

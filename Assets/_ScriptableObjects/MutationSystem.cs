@@ -18,9 +18,9 @@ public class MutationEffect : ScriptableObject
     public float modifier;
 
     [Header("Visuals – Mutation Sprite")]
-    [Tooltip("Nøgle der matcher en MutationSpriteEntry i PlantData (fx 'fire', 'ice').\n" +
-             "Når planten er ved maxGrowthStage vises den tilsvarende familie-sprite. Tom = ingen sprite-effekt.")]
-    public string mutationSpriteKey;
+    [Tooltip("Sprite der vises ved maxGrowthStage når denne mutation er aktiv.\n" +
+             "PlantData kan overskrive med en plante-specifik variant via MutationSpriteOverride.")]
+    public Sprite mutatedSprite;
 
     [Header("Crossbreeding")]
     [Tooltip("Relativ spredningsvægt. Højere = spreder sig nemmere til naboer.")]
@@ -41,30 +41,54 @@ public class MutationSystem : MonoBehaviour
         float chance = plant.data.mutationChanceBase;
         if (weather == WeatherType.AcidRain) chance = 1f;
 
-        if (Random.value > chance) return;
+        float roll = Random.value;
+        if (roll > chance)
+        {
+            Debug.Log($"[MutationSystem] {plant.data.plantName}: chance={chance:P0}, roll={roll:F2} – ingen mutation denne dag.");
+            return;
+        }
 
         // Forsøg at fylde et tomt slot
         var emptySlots = GetEmptySlots(plant);
-        if (emptySlots.Count == 0) return;
+        if (emptySlots.Count == 0)
+        {
+            Debug.Log($"[MutationSystem] {plant.data.plantName}: Alle slots er allerede muterede.");
+            return;
+        }
 
         // Vælg et tilfældigt tomt slot
         var targetSlot = emptySlots[Random.Range(0, emptySlots.Count)];
 
         var mutation = PickMutationForSlot(plant, targetSlot);
-        if (mutation == null) return;
+        if (mutation == null)
+        {
+            Debug.LogWarning($"[MutationSystem] {plant.data.plantName}: Ingen MutationEffect matcher slot '{targetSlot}' i allMutations-arrayet!");
+            return;
+        }
 
         plant.SetSlot(targetSlot, mutation);
-        Debug.Log($"{plant.data.plantName} fik mutation: {mutation.mutationName} i {targetSlot}");
+        Debug.Log($"[MutationSystem] ★ {plant.data.plantName} fik mutation: {mutation.mutationName} i {targetSlot}");
     }
 
     public void RollAllMutations(PlantSlot[] allSlots, WeatherType weather)
     {
+        if (allMutations == null || allMutations.Length == 0)
+        {
+            Debug.LogWarning("[MutationSystem] allMutations er tom! Træk dine MutationEffect-assets ind på MutationSystem-komponenten i Inspector.");
+            return;
+        }
+
+        int occupiedCount = 0;
         foreach (var slot in allSlots)
         {
             if (!slot.IsOccupied()) continue;
+            occupiedCount++;
             Plant plant = slot.GetCurrentPlant();
             if (plant != null) RollMutations(plant, weather);
         }
+
+        if (occupiedCount == 0)
+            Debug.LogWarning("[MutationSystem] Ingen besatte planteslots fundet – er der plantet noget?");
     }
 
     private List<MutationSlotType> GetEmptySlots(Plant plant)

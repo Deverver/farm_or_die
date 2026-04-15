@@ -1,17 +1,17 @@
 using UnityEngine;
 
 /// <summary>
-/// Binder en mutations-nøgle (fx "fire", "ice") til den korrekte sprite
-/// for denne specifikke plantefamilie ved maxGrowthStage.
-/// Udfyldes i Inspector for hvert PlantData-asset.
+/// Overskriver mutations-spriten for en specifik MutationEffect på denne plantefamilie.
+/// Sættes i Inspector på hvert PlantData-asset — fx LeafPlant_3_fire til Fire-mutationen.
+/// Hvis intet override er sat, bruges MutationEffect.mutatedSprite som fallback.
 /// </summary>
 [System.Serializable]
-public struct MutationSpriteEntry
+public struct MutationSpriteOverride
 {
-    [Tooltip("Matcher MutationEffect.mutationSpriteKey (fx 'fire', 'ice').")]
-    public string key;
+    [Tooltip("Den MutationEffect dette override gælder for.")]
+    public MutationEffect mutation;
 
-    [Tooltip("Sprite der vises ved maxGrowthStage når denne mutationstype er aktiv.")]
+    [Tooltip("Plante-specifik sprite ved maxGrowthStage (fx LeafPlant_3_fire).")]
     public Sprite sprite;
 }
 
@@ -30,22 +30,31 @@ public class PlantData : ScriptableObject
     public int seedCost = 5;          // Pris i shop
     public int produceValue = 8;      // Salgspris pr. produce
 
-    [Header("Mutation Sprites")]
-    [Tooltip("Map mutations-nøgler til den rigtige familie-sprite ved maxGrowthStage.\n" +
-             "Eks.: key='fire' → LeafPlant_3_fire  |  key='ice' → LeafPlant_3_ice")]
-    public MutationSpriteEntry[] mutationSprites;
+    [Header("Mutation Sprite Overrides")]
+    [Tooltip("Plante-specifikke sprites per mutation.\n" +
+             "Hvis tomt bruges MutationEffect.mutatedSprite som fallback.\n" +
+             "Eks.: Fire-mutation → LeafPlant_3_fire")]
+    public MutationSpriteOverride[] mutationOverrides;
 
     /// <summary>
-    /// Returnerer mutation-sprite for den givne nøgle, eller null hvis ingen match.
+    /// Returnerer den korrekte mutations-sprite for denne plantefamilie.
+    /// Tjekker plantens egne overrides først — falder tilbage på mutationens default sprite.
     /// </summary>
-    public Sprite GetMutationSprite(string key)
+    public Sprite GetMutationSprite(MutationEffect mutation)
     {
-        if (mutationSprites == null || string.IsNullOrEmpty(key)) return null;
-        foreach (var entry in mutationSprites)
+        if (mutation == null) return null;
+
+        if (mutationOverrides != null)
         {
-            if (string.Equals(entry.key, key, System.StringComparison.OrdinalIgnoreCase))
-                return entry.sprite;
+            foreach (var entry in mutationOverrides)
+            {
+                if (entry.mutation == mutation && entry.sprite != null)
+                    return entry.sprite;
+            }
         }
-        return null;
+
+        // Fallback: brug spriten direkte fra MutationEffect-asset
+        return mutation.mutatedSprite;
     }
 }
+
