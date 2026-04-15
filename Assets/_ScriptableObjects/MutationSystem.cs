@@ -17,14 +17,10 @@ public class MutationEffect : ScriptableObject
              "Slot 3: value multiplikator (2.0 = dobbelt pris)")]
     public float modifier;
 
-    [Header("Visuals – Slot 1 (Color Tint)")]
-    [Tooltip("Multiplicativt blandet oven på plante-familiens base-tint. White = ingen effekt.")]
-    public Color spriteColor = Color.white;
-
-    [Header("Visuals – Slot 2 (Sprite Override)")]
-    [Tooltip("Vækststadier der erstatter PlantData.growthSprites når denne mutation er aktiv.\n" +
-             "Skal have samme antal elementer som plantens maxGrowthStage. Tom = ingen effekt.")]
-    public Sprite[] growthSpriteOverrides;
+    [Header("Visuals – Mutation Sprite")]
+    [Tooltip("Nøgle der matcher en MutationSpriteEntry i PlantData (fx 'fire', 'ice').\n" +
+             "Når planten er ved maxGrowthStage vises den tilsvarende familie-sprite. Tom = ingen sprite-effekt.")]
+    public string mutationSpriteKey;
 
     [Header("Crossbreeding")]
     [Tooltip("Relativ spredningsvægt. Højere = spreder sig nemmere til naboer.")]

@@ -12,13 +12,13 @@ public class Plant : MonoBehaviour
 
     // ── Mutation slots ─────────────────────────────────────────────
     [Header("Mutation Slots")]
-    [Tooltip("Slot 1 – HarvestDifficulty | Visual: farvetint")]
+    [Tooltip("Slot 1 – HarvestDifficulty")]
     public MutationEffect slot1;
 
-    [Tooltip("Slot 2 – Yield | Visual: sprite-override")]
+    [Tooltip("Slot 2 – Yield")]
     public MutationEffect slot2;
 
-    [Tooltip("Slot 3 – Value | Ingen visual effekt")]
+    [Tooltip("Slot 3 – Value")]
     public MutationEffect slot3;
 
     private SpriteRenderer _sr;
@@ -50,7 +50,10 @@ public class Plant : MonoBehaviour
     // ── Visual pipeline ────────────────────────────────────────────
 
     /// <summary>
-    /// Fuld visuel refresh – opdaterer både sprite-kilde og farvetint.
+    /// Fuld visuel refresh.
+    /// Ved maxGrowthStage med aktiv mutation: vises familie-specifik mutations-sprite
+    /// med Color.white (spriten har allerede sine egne farver).
+    /// Ellers: greyscale vækst-sprite tintes med familiens farve.
     /// Kald ved: Initialize, Grow, SetSlot.
     /// </summary>
     public void RefreshSprite()
@@ -58,39 +61,55 @@ public class Plant : MonoBehaviour
         if (_sr == null) _sr = GetComponent<SpriteRenderer>();
         if (data == null) return;
 
-        // Sprite-kilde: slot 2 override > PlantData sprites
-        Sprite[] activeSprites =
-            (slot2?.growthSpriteOverrides != null && slot2.growthSpriteOverrides.Length > 0)
-                ? slot2.growthSpriteOverrides
-                : data.growthSprites;
+        // Ved maxGrowthStage: tjek for mutations-sprite (har egne farver → ingen tint)
+        if (growthStage >= data.maxGrowthStage)
+        {
+            Sprite mutSprite = ResolveMutationSprite();
+            if (mutSprite != null)
+            {
+                _sr.sprite = mutSprite;
+                _sr.color  = Color.white; // mutation-spriten er allerede farvelagt
+                return;
+            }
+        }
 
-        if (activeSprites != null && growthStage < activeSprites.Length)
-            _sr.sprite = activeSprites[growthStage];
+        // Normale greyscale vækst-sprites: læg familie-tint på
+        if (data.growthSprites != null && growthStage < data.growthSprites.Length)
+            _sr.sprite = data.growthSprites[growthStage];
 
-        UpdateSpriteColor();
+        _sr.color = GetFamilyTint();
     }
 
     /// <summary>
-    /// SpriteRenderer.color = FamilyTint × Slot1Tint
+    /// Gennemgår slot1→slot2→slot3 og returnerer den første
+    /// mutations-sprite der kan slås op i PlantData, eller null.
     /// </summary>
-    public void UpdateSpriteColor()
+    private Sprite ResolveMutationSprite()
     {
-        if (_sr == null) return;
-        Color c = GetFamilyTint();
-        if (slot1 != null) c *= slot1.spriteColor;
-        _sr.color = c;
+        MutationEffect[] slots = { slot1, slot2, slot3 };
+        foreach (var slot in slots)
+        {
+            if (slot == null || string.IsNullOrEmpty(slot.mutationSpriteKey)) continue;
+            Sprite s = data.GetMutationSprite(slot.mutationSpriteKey);
+            if (s != null) return s;
+        }
+        return null;
     }
 
+    /// <summary>
+    /// Returnerer den greyscale-kompenserende farvetint for plantens familie.
+    /// Bruges kun på normale vækst-sprites; mutations-sprites er allerede farvelagt.
+    /// </summary>
     private Color GetFamilyTint()
     {
         if (data == null) return Color.white;
         return data.family switch
         {
-            PlantFamily.Leafy => new Color(0.78f, 1.00f, 0.78f), // blød grøn
-            PlantFamily.Root => new Color(0.88f, 0.74f, 0.55f), // varm brun
-            PlantFamily.Fruit => new Color(1.00f, 0.86f, 0.58f), // gylden/varm
+            PlantFamily.Leafy  => new Color(0.78f, 1.00f, 0.78f), // blød grøn
+            PlantFamily.Root   => new Color(0.88f, 0.74f, 0.55f), // varm brun
+            PlantFamily.Fruit  => new Color(1.00f, 0.86f, 0.58f), // gylden/varm
             PlantFamily.Flower => new Color(0.88f, 0.74f, 1.00f), // lilla
-            _ => Color.white
+            _                  => Color.white
         };
     }
 
