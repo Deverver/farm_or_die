@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8648c2dfa3d7e8a48afec5bfa2c4856c, type: 3}
+  m_Name: RockPlant
+  m_EditorClassIdentifier: Assembly-CSharp::PlantData
+  plantName: Rocky Plant
+  family: 1
+  maxGrowthStage: 4
+  baseYield: 3
+  baseHarvestDifficulty: 0.1
+  maxMutationSlots: 3
+  mutationChanceBase: 0.05
+  healAmountPerProduce: 10
+  growthSprites:
+  - {fileID: 7715670196971091905, guid: 821e8e848f137f64a82af8310c6c522a, type: 3}
+  - {fileID: 4242357262165574546, guid: 0adcb7a6d7a6a7448aef122f46cebe99, type: 3}
+  - {fileID: -8349074665426095335, guid: 094d0499fa35d9740aeffc8fe7b90047, type: 3}
+  - {fileID: -4638923717683488812, guid: 01875d13cbe743b429b85619011dd1df, type: 3}
+  seedCost: 5
+  produceValue: 8
+  mutationSprites: []
