@@ -903,7 +903,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1695410011
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -7827,7 +7827,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 382232081
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 840bb346c53e13844b8eec3df32143a9, type: 3}
@@ -7948,7 +7948,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 382232081
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7972527398245070309, guid: 714d6f8755a2e814ba36f595102fe48a, type: 3}
@@ -8201,7 +8201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 382232081
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2448511088039585647, guid: b971a50bf699cf84d92ccbfec9f39257, type: 3}
@@ -8344,7 +8344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106b0f395bf04ae4581c3491eb4212a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlantInteraction
-  selectedSeed: {fileID: 11400000, guid: 4b45f895f99b6ae4796a500add1a4d6c, type: 2}
+  selectedSeed: {fileID: 11400000, guid: abc3920004a55d9418a9e7a39aa2699e, type: 2}
 --- !u!114 &8288329734229713658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8376,7 +8376,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory
   startingItems:
-  - {fileID: 11400000, guid: 4b45f895f99b6ae4796a500add1a4d6c, type: 2}
+  - {fileID: 11400000, guid: abc3920004a55d9418a9e7a39aa2699e, type: 2}
+  - {fileID: 11400000, guid: 4339ce32e2b315144b69a90cc0a989c4, type: 2}
+  - {fileID: 11400000, guid: 529d74b5189277841a81aa42aec79062, type: 2}
   startingAmount: 5
 --- !u!4 &9203102433089502311
 Transform:

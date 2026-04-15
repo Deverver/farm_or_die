@@ -12,11 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: easyHarvest
   m_EditorClassIdentifier: Assembly-CSharp::MutationEffect
-  mutationName: easyHarvest
-  description: 
-  slotType: 0
-  rarity: 0
-  modifier: 0
-  spriteColor: {r: 0.13013718, g: 0.42558622, b: 0.8805031, a: 1}
-  growthSpriteOverrides: []
-  crossbreedWeight: 1
