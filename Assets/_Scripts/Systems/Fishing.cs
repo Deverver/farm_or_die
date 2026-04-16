@@ -4,16 +4,11 @@ using System.Collections;
 
 public class Fishing : MonoBehaviour
 {
-
-    private Inventory inventory;
-    public ItemData Fish;
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private ItemData Fish;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void Awake()
-    {
-        inventory = GetComponent<Inventory>();
-    }
     void Start()
     {
         
