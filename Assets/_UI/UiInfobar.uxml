@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Image source="project://database/Assets/_Imported/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20%20parchment.png?fileID=2800000&amp;guid=43a7d98bd4222b64e933596512dc09ad&amp;type=3#UI board Large  parchment" scale-mode="StretchToFill" style="height: 47px; width: 579px; position: absolute;"/>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:Label text="Day: 1" name="DayText" style="width: 136px; height: 40px; align-self: auto; align-items: auto; -unity-text-align: middle-center;"/>
+        <ui:Label text="Label" name="EnergyText" style="width: 133px; height: 40px; align-self: auto; align-items: auto; -unity-text-align: middle-center;"/>
+        <ui:Label text="Label" name="HealthText" style="width: 136px; height: 40px; align-self: auto; align-items: auto; -unity-text-align: middle-center;"/>
+        <ui:Label text="Label" name="MoneyText" style="width: 136px; height: 40px; align-self: auto; align-items: auto; -unity-text-align: middle-center;"/>
+    </ui:VisualElement>
+</ui:UXML>
