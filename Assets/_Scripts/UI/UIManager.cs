@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             inventory.style.display = inventory.style.display == DisplayStyle.None ? DisplayStyle.Flex : DisplayStyle.None;
         }
