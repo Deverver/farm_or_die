@@ -45,6 +45,9 @@ TagManager:
   - name: Background
     uniqueID: 2251462777
     locked: 0
+  - name: Plants
+    uniqueID: 3279956899
+    locked: 0
   - name: Player
     uniqueID: 382232081
     locked: 0

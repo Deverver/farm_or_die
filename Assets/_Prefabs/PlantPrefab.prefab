@@ -47,8 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Plant
   data: {fileID: 11400000, guid: 8ab70db8e97213d41bf63800aafda8b8, type: 2}
   growthStage: 0
-  mutations: []
   currentHealth: 100
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
+  slot3: {fileID: 0}
 --- !u!212 &-2759952522731603837
 SpriteRenderer:
   serializedVersion: 2
@@ -94,7 +96,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 382232081
+  m_SortingLayerID: -1015010397
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
