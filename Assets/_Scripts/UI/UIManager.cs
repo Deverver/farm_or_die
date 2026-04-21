@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
         moneyText.text = "Money: " + money;
     }
 
-    void Start()
+    void Awake()
     {
         inventory = ui.rootVisualElement.Q<VisualElement>("inventory");
         dayText = statUI.rootVisualElement.Q<Label>("DayText");
