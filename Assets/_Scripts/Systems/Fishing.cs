@@ -5,6 +5,7 @@ using System.Collections;
 public class Fishing : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private ItemData Fish;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,12 +25,9 @@ public class Fishing : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
+            inventory.AddItem(Fish, 1);
+            playerStats.UseEnergy(10);
             GetFish();
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                inventory.AddItem(Fish, 1);
-                GetFish();
-            }
         }
     }
 
