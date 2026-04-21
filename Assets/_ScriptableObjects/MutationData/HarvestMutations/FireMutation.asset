@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: fire_Yield
+  m_Name: FireMutation
   m_EditorClassIdentifier: Assembly-CSharp::MutationEffect
   mutationName: 
   description: 
   slotType: 0
-  rarity: 0
-  modifier: 0
-  mutationSpriteKey: 
+  rarity: 1
+  modifier: 2
+  mutatedSprite: {fileID: 0}
   crossbreedWeight: 1

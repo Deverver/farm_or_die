@@ -415,7 +415,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MutationSystem
   allMutations:
-  - {fileID: 11400000, guid: cf4d14e4f4233d54297b1bb0f383d0d3, type: 2}
+  - {fileID: 11400000, guid: 629f3ee3a69af45499575396eb8204db, type: 2}
+  - {fileID: 11400000, guid: 7283df53e8ed0dc4bb8b70a11e024c46, type: 2}
+  - {fileID: 11400000, guid: 67e0e7b723cb28f4bab93b1ff239b4cc, type: 2}
+  - {fileID: 11400000, guid: 696ae22fbfe6ad243bab070b4a0221ef, type: 2}
+  - {fileID: 11400000, guid: 4c2dc1434594c994ea5adfe9b64b0e16, type: 2}
+  - {fileID: 11400000, guid: 7186555c791821746a4a379bbad3577c, type: 2}
+  - {fileID: 11400000, guid: 0666f0074686291459da37e07e03e101, type: 2}
+  - {fileID: 11400000, guid: 66ae831e7e2862b4994904065e61af4f, type: 2}
 --- !u!4 &393477563
 Transform:
   m_ObjectHideFlags: 0
@@ -7011,6 +7018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262055742}
   - component: {fileID: 1262055743}
+  - component: {fileID: 1262055744}
   m_Layer: 0
   m_Name: FishingGameCollider
   m_TagString: FishingSpot
@@ -7079,6 +7087,24 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1262055744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262055741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7989ac88d7d09ff4ca2fde217efb8879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Fishing
+  inventory: {fileID: 8288329734229713659}
+  playerStats: {fileID: 8288329734229713658}
+  Fish: {fileID: 11400000, guid: 8d81ba94bed2ffc46a9a6028aaf4f5e6, type: 2}
+  <getFishEvent>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1270756811
 GameObject:
   m_ObjectHideFlags: 0
@@ -8310,10 +8336,9 @@ GameObject:
   - component: {fileID: 8288329734229713657}
   - component: {fileID: 8288329734229713658}
   - component: {fileID: 8288329734229713659}
-  - component: {fileID: 8288329734229713660}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8359,7 +8384,7 @@ Transform:
   m_GameObject: {fileID: 6902911186013143085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -2.005, y: 0.042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8400,7 +8425,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -8410,7 +8435,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.6}
+  m_Size: {x: 0.25, y: 0.2}
   m_EdgeRadius: 0
 --- !u!114 &8288329734229713657
 MonoBehaviour:
@@ -8424,7 +8449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106b0f395bf04ae4581c3491eb4212a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPlantInteraction
-  selectedSeed: {fileID: 11400000, guid: abc3920004a55d9418a9e7a39aa2699e, type: 2}
+  selectedSeed: {fileID: 11400000, guid: 3432a09236c1e4e4a9ecdb67e840e134, type: 2}
 --- !u!114 &8288329734229713658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8459,22 +8484,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: abc3920004a55d9418a9e7a39aa2699e, type: 2}
   - {fileID: 11400000, guid: 4339ce32e2b315144b69a90cc0a989c4, type: 2}
   - {fileID: 11400000, guid: 529d74b5189277841a81aa42aec79062, type: 2}
-  startingAmount: 5
---- !u!114 &8288329734229713660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6902911186013143085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7989ac88d7d09ff4ca2fde217efb8879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Fishing
-  <getFishEvent>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
+  - {fileID: 11400000, guid: 3432a09236c1e4e4a9ecdb67e840e134, type: 2}
+  startingAmount: 6
 --- !u!4 &9203102433089502311
 Transform:
   m_ObjectHideFlags: 0

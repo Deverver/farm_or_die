@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Flower Seed
   icon: {fileID: 0}
   itemType: 0
-  seedFor: {fileID: 0}
+  seedFor: {fileID: 11400000, guid: 664a72508fad84749a19c24f2234643e, type: 2}
   healAmount: 0
   energyRestore: 0
   mutationChanceMod: 0

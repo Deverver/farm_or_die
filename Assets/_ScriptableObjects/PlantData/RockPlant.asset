@@ -27,4 +27,20 @@ MonoBehaviour:
   - {fileID: -4638923717683488812, guid: 01875d13cbe743b429b85619011dd1df, type: 3}
   seedCost: 5
   produceValue: 8
-  mutationSprites: []
+  mutationOverrides:
+  - mutation: {fileID: 11400000, guid: 7283df53e8ed0dc4bb8b70a11e024c46, type: 2}
+    sprite: {fileID: 29397975891524921, guid: 8be95e04a4d2cfe4e90843380014fd7d, type: 3}
+  - mutation: {fileID: 11400000, guid: 629f3ee3a69af45499575396eb8204db, type: 2}
+    sprite: {fileID: -5077493656397641269, guid: 844a609f7c2871c46a5261f19ab9c0e6, type: 3}
+  - mutation: {fileID: 11400000, guid: 67e0e7b723cb28f4bab93b1ff239b4cc, type: 2}
+    sprite: {fileID: 0}
+  - mutation: {fileID: 11400000, guid: 696ae22fbfe6ad243bab070b4a0221ef, type: 2}
+    sprite: {fileID: 0}
+  - mutation: {fileID: 11400000, guid: 4c2dc1434594c994ea5adfe9b64b0e16, type: 2}
+    sprite: {fileID: 0}
+  - mutation: {fileID: 11400000, guid: 7186555c791821746a4a379bbad3577c, type: 2}
+    sprite: {fileID: 0}
+  - mutation: {fileID: 11400000, guid: 0666f0074686291459da37e07e03e101, type: 2}
+    sprite: {fileID: 0}
+  - mutation: {fileID: 11400000, guid: 66ae831e7e2862b4994904065e61af4f, type: 2}
+    sprite: {fileID: 0}
