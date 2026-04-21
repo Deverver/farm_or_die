@@ -1,9 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class Fishing : MonoBehaviour
 {
+    [SerializeField] private Inventory inventory;
+    [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private ItemData Fish;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         
@@ -15,18 +21,21 @@ public class Fishing : MonoBehaviour
         
     }
 
-    protected void OnTriggerEnter(Collider fishingSpot)
+    protected void OnTriggerEnter2D(Collider2D collider)
     {
-        if (fishingSpot.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
+            inventory.AddItem(Fish, 1);
+            playerStats.UseEnergy(10);
             GetFish();
         }
     }
 
+
     public void GetFish()
     {
         Debug.Log("You got a fish!");
-        // brug addItem i Inventory til at give spilleren en fisk
+        
         getFishEvent.Invoke();
     }
 
