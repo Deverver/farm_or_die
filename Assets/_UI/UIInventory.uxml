@@ -1,0 +1,38 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="inventory" style="flex-grow: 1; align-items: center; justify-content: center; display: flex;">
+        <ui:Image source="project://database/Assets/_Imported/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20stone.png?fileID=2800000&amp;guid=7066e0747291df44fa5c2bf93bee3a6e&amp;type=3#UI board Large stone" scale-mode="StretchToFill" style="height: 461px; width: 691px; align-items: center; justify-content: center;">
+            <ui:VisualElement name="VisualElement" style="flex-grow: 1; width: 663px; flex-direction: row;">
+                <ui:Image source="project://database/Assets/_Imported/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20%20parchment.png?fileID=2800000&amp;guid=43a7d98bd4222b64e933596512dc09ad&amp;type=3#UI board Large  parchment" scale-mode="StretchToFill" style="height: 228px; width: 187px; left: 50px; top: 50px; right: 50px;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: center;">
+                        <ui:Label text="leaf seed: 0" selectable="true" focusable="true" style="top: 40px;"/>
+                        <ui:Image source="project://database/Assets/_Sprites/Plants/LeafPlants/LeafPlant_0.png?fileID=2800000&amp;guid=f8e4dbb840e62084e97f61e1a6611bd7&amp;type=3#LeafPlant_0" scale-mode="ScaleToFit" style="height: 68px; width: 71px; top: 30px;"/>
+                        <ui:VisualElement style="flex-grow: 1; width: 147px; top: 50px; align-items: flex-start; flex-direction: row;">
+                            <ui:Button text="select" name="Button" style="width: 65px;"/>
+                            <ui:Button text="buy" style="width: 65px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:Image>
+                <ui:Image source="project://database/Assets/_Imported/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20%20parchment.png?fileID=2800000&amp;guid=43a7d98bd4222b64e933596512dc09ad&amp;type=3#UI board Large  parchment" scale-mode="StretchToFill" style="height: 228px; width: 187px; left: 50px; top: 50px; right: 50px;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: center;">
+                        <ui:Label text="tube seed: 0" selectable="true" focusable="true" style="top: 40px;"/>
+                        <ui:Image source="project://database/Assets/_Sprites/Plants/TubePlants/TubePlant_0.png?fileID=2800000&amp;guid=79c4eb8331f83844185f0bc895e13ba4&amp;type=3#TubePlant_0" scale-mode="ScaleToFit" style="height: 68px; width: 71px; top: 30px;"/>
+                        <ui:VisualElement style="flex-grow: 1; width: 147px; top: 50px; align-items: flex-start; flex-direction: row;">
+                            <ui:Button text="select" name="Button" style="width: 65px;"/>
+                            <ui:Button text="buy" style="width: 65px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:Image>
+                <ui:Image source="project://database/Assets/_Imported/Fantasy%20Wooden%20GUI%20%20Free/normal_ui_set%20A/UI%20board%20Large%20%20parchment.png?fileID=2800000&amp;guid=43a7d98bd4222b64e933596512dc09ad&amp;type=3#UI board Large  parchment" scale-mode="StretchToFill" style="height: 228px; width: 187px; left: 50px; top: 50px; right: 50px;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; align-items: center;">
+                        <ui:Label text="rock seed: 0" selectable="true" focusable="true" style="top: 40px;"/>
+                        <ui:Image source="project://database/Assets/_Sprites/Plants/RockPlants/RockPlant_0.png?fileID=2800000&amp;guid=821e8e848f137f64a82af8310c6c522a&amp;type=3#RockPlant_0" scale-mode="ScaleToFit" style="height: 68px; width: 71px; top: 30px;"/>
+                        <ui:VisualElement style="flex-grow: 1; width: 147px; top: 50px; align-items: flex-start; flex-direction: row;">
+                            <ui:Button text="select" name="Button" style="width: 65px;"/>
+                            <ui:Button text="buy" style="width: 65px;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:Image>
+            </ui:VisualElement>
+        </ui:Image>
+    </ui:VisualElement>
+</ui:UXML>
