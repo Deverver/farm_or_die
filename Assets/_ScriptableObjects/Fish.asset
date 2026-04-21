@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: 
   icon: {fileID: 0}
-  itemType: 0
+  itemType: 3
   seedFor: {fileID: 0}
   healAmount: 0
   energyRestore: 0
