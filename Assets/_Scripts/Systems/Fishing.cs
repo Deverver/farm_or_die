@@ -29,8 +29,11 @@ public class Fishing : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            inventory.AddItem(Fish, 1);
-            GetFish();
+            if (Input.GetKey(KeyCode.F))
+            {
+                inventory.AddItem(Fish, 1);
+                GetFish();
+            }
         }
     }
 
