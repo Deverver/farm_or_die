@@ -3,14 +3,13 @@ using System;
 
 public class DaySystem : MonoBehaviour
 {
-    // ── State ─────────────────────────────────────────────────────
+    
     public int CurrentDay { get; private set; } = 1;
 
     // ── Cached References ─────────────────────────────────────────
     private PlantSlot[] allSlots;
     private GameManager gm;
 
-    // ── Unity Lifecycle ───────────────────────────────────────────
     void Start()
     {
         gm = GameManager.Instance;
@@ -21,21 +20,19 @@ public class DaySystem : MonoBehaviour
 
     void Update()
     {
-        // Temp: Space som End Day – erstattes af UI-knap
         if (Input.GetKeyDown(KeyCode.Space))
             EndDay();
     }
 
     // ── Day Cycle ─────────────────────────────────────────────────
-
     /// <summary>
-    /// Rækkefølge jf. game design spec:
-    /// 1. Planter gror
-    /// 2. Mutation rolls
-    /// 3. Miljøeffekter (radiation, vejr-skade)
-    /// 4. Tidsbestemte events
-    /// 5. Spiller resources nulstilles
-    /// 6. Dag tæller op + nyt vejr rulles
+    /// 1. Plants grow
+    /// 2. System checks if crossbreeding occurred and processes it
+    /// 3. Mutation rolls
+    /// 4. Environmental effects (radiation, weather damage)
+    /// 5. Timed events (WeekEvent/MonthEvent)
+    /// 6. Player resources reset
+    /// 7. Day count up + new weather rolls
     /// </summary>
     public void EndDay()
     {
@@ -69,8 +66,7 @@ public class DaySystem : MonoBehaviour
 
     private void HandleEnvironment()
     {
-        // Aktiveres i Fase 7 (RadiationSystem)
-        // gm.radiationSystem?.ApplyDailyRadiation(gm.playerStats);
+        // WIP (RadiationSystem)
     }
 
     private void HandlePlayerReset()
@@ -81,12 +77,10 @@ public class DaySystem : MonoBehaviour
     // ── Start-of-Next-Day Steps ───────────────────────────────────
     private void HandleNewDaySetup()
     {
-        // Aktiveres i Fase 5 (WeatherSystem)
-        // gm.weatherSystem?.RollWeather();
-        // gm.uiManager.UpdateWeather(gm.weatherSystem.CurrentWeather);
+        // WIP (WeatherSystem)
     }
 
-    // ── Tidsbestemte Events ───────────────────────────────────────
+    // ── Timed Events ───────────────────────────────────────
     private void CheckForTimedEvents()
     {
         if (CurrentDay % 7 == 0) WeeklyEvent();
@@ -95,12 +89,15 @@ public class DaySystem : MonoBehaviour
 
     private void WeeklyEvent()
     {
+        // WIP Event(Traveling Merchant);
+        // WIP Event (Player getting taxed by The Farmer);
         Debug.Log("Ugentlig event – rejsende købmand?");
-        // TravelingMerchant.Instance?.Spawn();
     }
 
     private void MonthlyEvent()
     {
+        // WIP Event(MonthOverview);
+        // WIP Event (Player getting taxed by The Farmer);
         Debug.Log("Månedlig event");
     }
 }

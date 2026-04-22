@@ -8,38 +8,43 @@ public class Fishing : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private ItemData Fish;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private bool inRange = false;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (inRange && Input.GetKeyDown(KeyCode.F))
+        {
+            GetFish();
+        }
     }
 
     protected void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
-            inventory.AddItem(Fish, 1);
-            playerStats.UseEnergy(10);
-            GetFish();
+            inRange = true;
+        }
+    }
+
+    protected void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            inRange = false;
         }
     }
 
 
     public void GetFish()
     {
-        Debug.Log("You got a fish!");
-        
-        getFishEvent.Invoke();
+        if (playerStats.UseEnergy(10))
+        {
+            inventory.AddItem(Fish, 1);
+            Debug.Log("You got a fish!");
+            getFishEvent.Invoke();
+        }
     }
 
     [field: SerializeField]
-
     public UnityEvent getFishEvent { get; private set; }
 }
